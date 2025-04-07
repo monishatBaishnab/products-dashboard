@@ -1,12 +1,52 @@
-# React + Vite
+## Setup Instructions
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Prerequisites
 
-Currently, two official plugins are available:
+- Node.js installed (v14 or higher).
+- npm or yarn as the package manager.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. Extract the Zip File
 
-## Expanding the ESLint configuration
+1. Download and extract the provided zip file.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+2. Navigate to the project folder:
+
+```bash
+cd path/to/extracted/project-folder
+```
+
+### 2. Install Dependencies
+
+In the project folder, run the following command to install the necessary dependencies:
+
+```bash
+npm install
+# or if using yarn
+yarn install
+```
+
+### 3. Run the Application Locally
+
+To start the development server and view the app locally, run:
+
+```bash
+npm start
+# or if using yarn
+yarn start
+```
+
+Your application will be available at `http://localhost:5173/`.
+
+### 4. Project Features Breakdown
+
+- **DataTable Component**: 
+  - Fetch product data from `products.json`.
+  - Display in a table with sorting and filtering.
+  
+- **Graph Component**:
+  - Fetch stock data from `quantity.json`.
+  - Create bar-chart and pie chart to show total stock per category.
+
+- **State Management**:
+  - Use React hooks (`useState`, `useEffect`) for managing state.
+  - Handle sorting and filtering directly in the table.

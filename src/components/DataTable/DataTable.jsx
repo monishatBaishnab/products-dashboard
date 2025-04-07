@@ -63,7 +63,7 @@ const DataTable = () => {
             }
             className="w-full outline-none focus:outline-none px-4 py-1.5 border border-gray-200 rounded"
             type="text"
-            placeholder="Search names..."
+            placeholder="Filter by name..."
           />
           <input
             value={searchFilters.code}
@@ -75,7 +75,7 @@ const DataTable = () => {
             }
             className="w-full outline-none focus:outline-none px-4 py-1.5 border border-gray-200 rounded"
             type="text"
-            placeholder="Search codes..."
+            placeholder="Filter by code..."
           />
         </div>
       </div>

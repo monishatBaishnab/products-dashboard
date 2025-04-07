@@ -3,15 +3,29 @@ import { quantityServices } from "../../services/quantity.services";
 import {
   BarChart,
   Bar,
-  LineChart,
-  Line,
   ResponsiveContainer,
   XAxis,
   YAxis,
   Tooltip,
   Legend,
   CartesianGrid,
+  PieChart,
+  Pie,
+  Cell,
 } from "recharts";
+
+const COLORS = [
+  "#60a5fa",
+  "#34d399",
+  "#fbbf24",
+  "#f87171",
+  "#a78bfa",
+  "#fb7185",
+  "#10b981",
+  "#f472b6",
+  "#818cf8",
+  "#facc15",
+];
 
 const Graph = () => {
   const {
@@ -31,14 +45,17 @@ const Graph = () => {
       </h2>
 
       {isLoading || isFetching ? (
-        <div className="text-center text-gray-500 h-96 flex items-center justify-center">
-          Loading charts...
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="h-96 w-full bg-gray-100 rounded-md animate-pulse" />
+          <div className="h-96 w-full bg-gray-100 rounded-md animate-pulse" />
         </div>
       ) : (
         <div className="grid md:grid-cols-2 gap-6">
           {/* Bar Chart */}
-          <div className="bg-gray-50 h-96 rounded-lg p-4">
-            <h3 className="text-lg font-medium mb-2 text-gray-700">Bar Chart</h3>
+          <div className="bg-gray-50 h-96 rounded-lg p-4 pb-10">
+            <h3 className="text-lg font-medium mb-2 text-gray-700">
+              Bar Chart
+            </h3>
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={quantities}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -51,25 +68,33 @@ const Graph = () => {
             </ResponsiveContainer>
           </div>
 
-          {/* Line Chart */}
-          <div className="bg-gray-50 h-96 rounded-lg p-4">
-            <h3 className="text-lg font-medium mb-2 text-gray-700">Line Chart</h3>
+          {/* Pie Chart */}
+          <div className="bg-gray-50 h-96 rounded-lg p-4 pb-10">
+            <h3 className="text-lg font-medium mb-2 text-gray-700">
+              Pie Chart
+            </h3>
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={quantities}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="category" />
-                <YAxis />
+              <PieChart>
                 <Tooltip />
                 <Legend />
-                <Line
-                  type="monotone"
+                <Pie
+                  data={quantities}
                   dataKey="totalStockQuantity"
-                  stroke="#34d399"
-                  strokeWidth={3}
-                  dot={{ r: 5 }}
-                  activeDot={{ r: 8 }}
-                />
-              </LineChart>
+                  nameKey="category"
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={100}
+                  fill="#8884d8"
+                  label
+                >
+                  {quantities.map((_, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+              </PieChart>
             </ResponsiveContainer>
           </div>
         </div>
