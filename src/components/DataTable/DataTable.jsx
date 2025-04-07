@@ -5,6 +5,7 @@ import { COLUMNS } from "./constants";
 import { useEffect, useState } from "react";
 import sortItems from "../../utils/sortItems";
 import applyFilters from "../../utils/applyFilters";
+import useDebounce from "../../hooks/useDebounce";
 
 const DataTable = () => {
   const {
@@ -28,6 +29,10 @@ const DataTable = () => {
     sortOrder: "asc",
   });
 
+  // Use debounced values
+  const debouncedName = useDebounce(searchFilters.name, 300);
+  const debouncedCode = useDebounce(searchFilters.code, 300);
+
   // Function to handle sorting when a column header is clicked
   const handleSortChange = (columnKey) => {
     let newSortOrder = "asc";
@@ -40,14 +45,19 @@ const DataTable = () => {
   // Update filtered products based on search filters
   useEffect(() => {
     if (products) {
-      let filtered = applyFilters(products, searchFilters); // Apply filters first
+      const debouncedFilters = {
+        name: debouncedName,
+        code: debouncedCode,
+      };
+
+      let filtered = applyFilters(products, debouncedFilters); // Apply filters first
       if (sortConfig.columnKey) {
         // If sorting is enabled, sort the filtered products
         filtered = sortItems(sortConfig, filtered);
       }
       setFilteredProducts(filtered);
     }
-  }, [products, searchFilters, sortConfig]);
+  }, [products, debouncedName, debouncedCode, sortConfig]);
   return (
     <section className="bg-white shadow rounded-lg p-6 mb-8">
       <div className="flex items-center justify-center sm:justify-between mb-4 flex-wrap sm:flex-nowrap gap-3">
