@@ -1,0 +1,42 @@
+[
+  {
+    "category": "Food",
+    "totalStockQuantity": 230
+  },
+  {
+    "category": "Electronics",
+    "totalStockQuantity": 75
+  },
+  {
+    "category": "Clothes",
+    "totalStockQuantity": 200
+  },
+  {
+    "category": "Books",
+    "totalStockQuantity": 120
+  },
+  {
+    "category": "Toys",
+    "totalStockQuantity": 150
+  },
+  {
+    "category": "Furniture",
+    "totalStockQuantity": 45
+  },
+  {
+    "category": "Sports",
+    "totalStockQuantity": 180
+  },
+  {
+    "category": "Automotive",
+    "totalStockQuantity": 60
+  },
+  {
+    "category": "Beauty",
+    "totalStockQuantity": 300
+  },
+  {
+    "category": "Home Appliances",
+    "totalStockQuantity": 50
+  }
+]
